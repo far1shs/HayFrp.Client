@@ -88,6 +88,9 @@ async fn run_program(
         .stdout(Stdio::piped())
         .stderr(Stdio::piped());
 
+    #[cfg(windows)]
+        cmd.creation_flags(0x08000000);
+
     // 显式标注错误类型 e: std::io::Error
     let mut group = cmd.group_spawn()
         .map_err(|e: std::io::Error| e.to_string())?;

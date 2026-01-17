@@ -30,6 +30,11 @@ const handleSign = async () => {
 
   const accounts = (await store.get<any[]>("accounts")) || [];
 
+  if (accounts.length === 0) {
+    toast.warning("请先到设置添加账号");
+    return;
+  }
+
   const fetchPromises = accounts.map(async (account, index) => {
     try {
       const csrf: string = await invoke("secure_decrypt", {

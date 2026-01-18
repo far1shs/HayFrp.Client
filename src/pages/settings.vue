@@ -157,7 +157,7 @@
       <ItemContent>
         <ItemTitle>HAYFRP 半三方客户端 - Far1sh</ItemTitle>
       </ItemContent>
-      <ItemActions>1.0.3</ItemActions>
+      <ItemActions>1.0.4</ItemActions>
     </Item>
     <Item variant="outline" class="bg-background dark:bg-[#151515]" as-child>
       <a target="_blank" href="https://github.com/far1shs/HayFrp.Client">

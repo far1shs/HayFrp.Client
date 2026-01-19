@@ -1,5 +1,9 @@
 <template>
   <div class="flex flex-col gap-3 h-[calc(100vh-108px)]">
+    <div class="text-sm text-gray-500 dark:text-gray-400 text-center">
+      {{ hitokoto }}
+    </div>
+
     <Item @click="handleSign" variant="outline" class="bg-background dark:bg-[#151515]" as-child>
       <a href="#">
         <ItemMedia>
@@ -14,12 +18,27 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted } from 'vue';
 import {Item, ItemContent, ItemMedia, ItemTitle} from "@/components/ui/item";
 import {CalendarRangeIcon} from "lucide-vue-next";
 import {load} from "@tauri-apps/plugin-store";
 import {API_URL} from "@/lib/env.ts";
 import {toast} from "vue-sonner";
 import {invoke} from "@tauri-apps/api/core";
+
+const hitokoto = ref('加载中...');
+const getHitokoto = async () => {
+  try {
+    const response = await fetch('https://v1.hitokoto.cn');
+    const data = await response.json();
+    hitokoto.value = data.hitokoto + ' —— ' + data.from;
+  } catch (error) {
+    hitokoto.value = '获取一言失败：' + error;
+  }
+};
+onMounted(() => {
+  getHitokoto();
+});
 
 const handleSign = async () => {
   const store = await load("settings.json", {

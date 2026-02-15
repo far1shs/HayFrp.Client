@@ -1,7 +1,8 @@
 # HAYFRP CLIENT
-这是一个半第三方的 HAYFRP 客户端, 由 Far1sh 开发就是开发 v3 面板的那个人 \
+这是一个半第三方的 HAYFRP 客户端, 由 Far1sh 开发 \
 node: 24.12.0 \
-bun: 1.3.5
+bun: 1.3.5 \
+官网: https://hfc.far1sh.top
 
 # 咋用
 软件里面基本上都标注了, 这不是开箱即用的, 你要去设置里面加一下子 [FRPC](https://console.hayfrp.com/console#download) 和 账号的 CSRF
